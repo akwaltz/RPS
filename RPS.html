@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Rock, Paper, Scissors, Lizard, Spock</title>
+	</head>
+	<body>
+		<script>
+		//Alanna Walter
+		//Estimated time: 10 hours
+		//95%   -   I think I have all the code, I just can't make it work
+		
+	window.onload = function() {
+		var correctInput = false;
+		var userChoice = " ";
+		var computerChoice = Math.random();
+		var isTie = false;
+		
+		//determines the computers choice
+		if (computerChoice < 0.2)
+		{
+			computerChoice = "rock";
+		}
+		else if (computerChoice <= 0.4)
+		{
+			computerChoice = "paper";
+		}
+		else if (computerChoice <= 0.6)
+		{
+			computerChoice = "scissors";
+		} 
+		else if (computerChoice <= 0.8)
+		{
+			computerChoice = "lizard";
+		}
+		else
+		{
+			computerChoice = "Spock";
+		}
+		
+		//starts the game and requests user choice
+		var startGame = function() {
+			while (!correctInput)
+			{
+				userChoice = prompt("Do you choose rock, paper, scissors, lizard, or Spock?").toLowerCase();
+				if (userChoice === "rock" || userChoice === "paper" || userChoice === "scissors" || userChoice === "lizard" || userChoice === "spock")
+				{
+					document.write("You chose " + userChoice + ".<br>");
+					correctInput = true;
+				}
+				else 
+				{
+					document.write("That's not a valid choice.  Choose again.<br>");
+					correctInput = false;
+				}
+			}
+			document.write("Computer chose " + computerChoice + ".<br>");    //put this outside the loop so computer choice doesn't print unless correct user input is entered
+		}
+
+		//compares two inputs to determine a winner
+		var compare = function(userThrow, computerThrow) {
+			if (userThrow === computerThrow)   //can't get this loop to work
+			{
+				return "The result is a tie! Shoot again.<br>";
+				isTie = true;
+			}
+			
+			switch (userThrow) {
+				case "rock":
+					if (computerThrow === "scissors")
+					{
+						return "Rock smashes scissors. User wins!";
+					}
+					else if (computerThrow === "paper")
+					{
+						return "Paper covers rock. Computer wins!";
+					}
+					else if (computerThrow === "lizard")
+					{
+						return "Rock smashes lizard. User wins!";
+					}
+					else
+					{
+						return "Spock vaporizes rock. Computer wins!";
+					}
+					break;
+					
+				case "scissors":
+					if (computerThrow === "rock")
+					{
+						return "Rocks smash scissors. Computer wins!";
+					}
+					else if (computerThrow === "paper")
+					{
+						return "Scissors cuts paper. User wins!";
+					}
+					else if (computerThrow === "lizard")
+					{
+						return "Scissors dicapitates lizard. User wins!";
+					}
+					else {
+						return "Spock smashes scissors. Computer wins!";
+					}    
+					break;
+					
+				case "paper":
+					if (computerThrow === "rock")
+					{
+						return "Paper covers rock. User wins!";
+					}
+					else if (computerThrow === "scissors")
+					{
+						return "Scissors cuts paper. Computer wins!";
+					}
+					else if (computerThrow === "lizard")
+					{
+						return "Lizard eats paper. Computer wins!";
+					}
+					else
+					{
+						return "Paper disproves Spock. User wins!";
+					}   
+					break;
+					
+				case "lizard":
+					if (computerThrow === "rock")
+					{
+						return "Rock smashes lizard. Computer wins!";
+					}
+					else if (computerThrow === "paper")
+					{
+						return "Lizard eats paper. User wins!";
+					}
+					else if (computerThrow === "scissors")
+					{
+						return "Scissors dicapitates lizard. Computer wins!";
+					}
+					else
+					{
+						return "Lizard poisons Spock. User wins!";
+					} 
+					break;
+					
+				case "spock":
+					if (computerThrow === "rock")
+					{
+						return "Spock vaporized rock. User wins!";
+					}
+					else if (computerThrow === "paper")
+					{
+						return "Paper disproves Spock. Computer wins!";
+					}
+					else if (computerThrow === "scissors")
+					{
+						return "Spock smashes scissors. User wins!";
+					}
+					else
+					{
+						return "Lizard poisons Spock. Computer wins!";
+					}    
+					break;
+						
+				default:
+					console.log("!!ERROR: compare");
+			}
+		}
+		do 
+		{
+			startGame();
+			document.write(compare(userChoice, computerChoice));
+		} while (isTie)
+	}
+		</script>
+	</body>
+</html>
